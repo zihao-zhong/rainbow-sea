@@ -2,9 +2,9 @@ import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
-    component: () => import('../pages/Home.vue'), // 懒加载组件
+    component: () => import('@/pages/Home.vue'), // 懒加载组件
   },
 ];
 
