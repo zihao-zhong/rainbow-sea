@@ -4,10 +4,12 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    'plugin:vue/essential',
+    // 'plugin:vue/essential',
+    'plugin:vue/vue3-essential',
     'airbnb-base',
     'plugin:prettier/recommended', // 添加 prettier 插件
     'plugin:import/typescript',
+    'plugin:jest/recommended',
   ],
   parserOptions: {
     ecmaVersion: 12,

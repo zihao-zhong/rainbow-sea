@@ -1,7 +1,7 @@
 <template>
   <div>
     <img alt="Vue logo" src="./assets/logo.png" />
-    <el-button type="primary">{{ btn }}</el-button>
+    <el-button type="primary" @click="handleClick">{{ btnText }}</el-button>
     <el-link type="primary">主要链接</el-link>
   </div>
 </template>
@@ -11,8 +11,12 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   setup() {
+    const handleClick = (): string => {
+      return 'hello';
+    };
     return {
-      btn: '阿萨德',
+      btnText: '测试按钮',
+      handleClick,
     };
   },
 });
