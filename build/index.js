@@ -7,6 +7,7 @@ handleBuild();
 
 function handleBuild() {
   shell.echo(chalk.green('开始打包...'));
+  shell.exec('git pull');
   shell.exec('npm install');
   shell.exec('npm run build');
 
