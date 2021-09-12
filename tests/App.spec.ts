@@ -1,5 +1,5 @@
 // import { mount } from '@vue/test-utils';
-// import Home from '../src/pages/Home.vue';
+// import Home from '@/src/pages/Home.vue';
 
 // test('App.vue', async () => {
 //   const home = mount(Home);
