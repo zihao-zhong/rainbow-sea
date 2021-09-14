@@ -36,6 +36,11 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
     'prettier/prettier': [
       'error',
       {

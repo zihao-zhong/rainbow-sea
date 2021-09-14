@@ -4,11 +4,11 @@ const app: Array<RouteRecordRaw> = [
   {
     path: '/app',
     redirect: '/app/test',
-    component: () => import('../layout/Home.vue'),
+    component: () => import('@/layout/Home.vue'),
     children: [
       {
         path: '/app/test',
-        component: () => import('../pages/Test.vue'),
+        component: () => import('@pages/Test.vue'),
       },
     ],
   },

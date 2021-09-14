@@ -6,7 +6,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'Home',
     redirect: '/app',
-    component: () => import('../layout/App.vue'), // 懒加载组件
+    component: () => import('@/layout/App.vue'), // 懒加载组件
     children: app,
   },
 ];
