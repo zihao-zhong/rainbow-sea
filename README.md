@@ -22,14 +22,10 @@ npm run build
 ```
 ├── build
 │   └── index.js               // 自动化构建脚本
-|
 ├── public                     // 静态资源
-|
 ├── src
 │   ├── api                    // api接口管理
 │   ├── asset                  // 主要放css, 图片等资源文件
-│   │   	├── scss             // 样式
-│   │   	└── img              // 图片
 │   ├── component              // vue 组件
 │   ├── utils                  // 公共工具文件
 │   ├── pages                  // vue 页面
@@ -38,17 +34,15 @@ npm run build
 │   ├── router                 // router 路由
 │   ├── types                  // ts 类型存放
 │   └── store                  // vuex 全局数据共享
-|
-├── index.html             // html 模版
-├── .eslintignore          // eslint 校验忽略文件
-├── .eslintre.js           // eslint 规范配置
-├── .editorconfig          // 代码规范
-├── .prettierrc            // 格式化代码格式
-├── .gitignore             // git忽略的文件/目录配置
-├── .babel.js              // babel配置，在该文件中加babel插件。该项目使用babel7
-├── package.json           // 项目配置，外部依赖模块
-├── jest.config.js         // jest 配置文件
-├── tsconfig.json          // ts 配置文件
-└── vite.config.ts         // vite 配置文件
-├── favicon.ico
+├── index.html                 // html 模版
+├── .eslintignore              // eslint 校验忽略文件
+├── .eslintre.js               // eslint 规范配置
+├── .editorconfig              // 代码规范
+├── .prettierrc                // 格式化代码格式
+├── .gitignore                 // git忽略的文件/目录配置
+├── .babel.js                  // babel配置，在该文件中加babel插件。该项目使用babel7
+├── package.json               // 项目配置，外部依赖模块
+├── jest.config.js             // jest 配置文件
+├── tsconfig.json              // ts 配置文件
+└── vite.config.ts             // vite 配置文件
 ```
