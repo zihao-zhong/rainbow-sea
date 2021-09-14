@@ -1,10 +1,13 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import app from './app';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
-    component: () => import('@/pages/Home.vue'), // 懒加载组件
+    redirect: '/app',
+    component: () => import('../layout/App.vue'), // 懒加载组件
+    children: app,
   },
 ];
 
