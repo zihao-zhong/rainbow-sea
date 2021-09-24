@@ -16,6 +16,6 @@ function handleBuild() {
   shell.exec('mv ./dist/* /usr/local/nginx/html');
   shell.exec('nginx -s reload');
   shell.echo(chalk.green('项目构建完成'));
-  shell.echo(chalk.green('http://www.zihao.work'));
+  shell.echo(chalk.green('https://www.zihao.work'));
   shell.exit();
 }

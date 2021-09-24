@@ -2,7 +2,9 @@
   "name": "rainbow-sea",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "NODE_ENV=dev vite",
+    "test": "NODE_ENV=test vite",
+    "pro": "NODE_ENV=pro vite",
     "build": "vue-tsc --noEmit && vite build",
     "build-auto": "node ./build/index.js",
     "serve": "vite preview",

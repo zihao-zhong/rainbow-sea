@@ -13,18 +13,29 @@ export default defineConfig(({ mode }) => ({
     },
   },
   server: {
-    port: 4000, // 设置服务启动端口号
-    open: true, // 设置服务启动时是否自动打开浏览器
-    cors: true, // 允许跨域
-
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://xxx.xxx.xxx.xxx:8000',
-    //     changeOrigin: true,
-    //     secure: false,
-    //     rewrite: (path) => path.replace('/api/', '/')
-    //   }
-    // }
+    port: 4000,   // 设置服务启动端口号
+    open: false,  // 设置服务启动时是否自动打开浏览器
+    cors: true,   // 允许跨域
+    proxy: {
+      '/api': {
+        target: process.env.NODE_ENV === 'pro' ? 'http://zihao.work:3333' : 'http://127.0.0.1:3333',
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace('/api/', '/')
+      }
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // 预加载全局的scss文件，全局加载scss变量
+        additionalData: `
+          @import "./src/assets/scss/normalize.css";
+          @import "./src/assets/scss/common.scss";
+          @import "./src/assets/scss/variables.scss";
+        `
+      },
+    }
   },
   plugins: [
     vue(),
