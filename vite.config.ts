@@ -20,8 +20,7 @@ export default defineConfig(({ mode }) => {
       cors: true,   // 允许跨域
       proxy: {
         '/api': {
-          // target: mode === 'prod' ? 'http://zihao.work:3333' : 'http://127.0.0.1:3333',
-          target: 'http://localhost:3333',
+          target: mode === 'prod' ? 'http://zihao.work:3333' : 'http://localhost:3333',
           changeOrigin: true,
           // secure: false,
           rewrite: (path) => path.replace(/^\/api/, '')

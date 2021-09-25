@@ -1,6 +1,6 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from 'axios';
 import { ElMessage } from 'element-plus';
-import { IAxioxResponse } from '@/types/common';
+import { IAxiosRequestConfig, IAxioxResponse } from '@/types/common';
 
 const instance = axios.create({ 
     baseURL: '/api',
@@ -39,7 +39,7 @@ instance.interceptors.response.use((response)=>{
   ElMessage.error('网络请求异常，请稍后重试!');
 });
 
-export default async function<T>(config: AxiosRequestConfig): Promise<IAxioxResponse<T>> {
+export default async function<T>(config: IAxiosRequestConfig): Promise<IAxioxResponse<T>> {
   return new Promise<IAxioxResponse<T>>((resolve, reject) => {
     instance(config)
       .then((data) => {
