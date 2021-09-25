@@ -2,10 +2,10 @@
   "name": "rainbow-sea",
   "version": "0.0.0",
   "scripts": {
-    "dev": "NODE_ENV=dev vite",
-    "test": "NODE_ENV=test vite",
-    "pro": "NODE_ENV=pro vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "dev": "vite --mode dev",
+    "test": "vite --mode test",
+    "pro": "vite --mode prod",
+    "build": "vue-tsc --noEmit && vite build --mode prod",
     "build-auto": "node ./build/index.js",
     "serve": "vite preview",
     "prepare": "husky install",
@@ -16,6 +16,7 @@
     "*.{vue,js,ts}": "eslint --fix"
   },
   "dependencies": {
+    "axios": "^0.21.4",
     "element-plus": "^1.1.0-beta.9",
     "vue": "^3.2.6",
     "vue-router": "^4.0.11",

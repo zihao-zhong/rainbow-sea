@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import app from './app';
 import database from './database';
+import game from './game';
+import word from './word';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -11,6 +13,8 @@ const routes: Array<RouteRecordRaw> = [
     children: app,
   },
   database,
+  game,
+  word,
 ];
 
 const router = createRouter({
