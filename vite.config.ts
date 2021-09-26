@@ -2,6 +2,8 @@ import path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import VitePluginElementPlus from 'vite-plugin-element-plus';
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -46,6 +48,9 @@ export default defineConfig(({ mode }) => {
         // 对于所有的 API 你可以参考 https://github.com/element-plus/vite-plugin-element-plus 的文档注释
         // useSource: true
         format: mode === 'dev' ? 'esm' : 'cjs',
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
       }),
     ],
   })

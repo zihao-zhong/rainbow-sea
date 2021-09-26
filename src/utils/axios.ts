@@ -18,6 +18,8 @@ instance.interceptors.request.use(config => {
 });
 
 instance.interceptors.response.use((response)=>{
+  console.log(response, response.data);
+  debugger;
   const res = response.data;
   switch (res.code) {
     case 0:

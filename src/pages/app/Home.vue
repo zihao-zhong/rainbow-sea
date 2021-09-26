@@ -8,11 +8,12 @@
 import { defineComponent } from 'vue';
 import { getUserList } from '@/api/app';
 export default defineComponent({
-  async setup() {
-    await getUserList({
+  setup() {
+    getUserList({
       pageNum: 1,
       pageSize: 10,
     });
+    return {};
   },
 });
 </script>
