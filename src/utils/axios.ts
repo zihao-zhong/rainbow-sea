@@ -22,7 +22,7 @@ instance.interceptors.response.use((response)=>{
   debugger;
   const res = response.data;
   switch (res.code) {
-    case 0:
+    case 200:
       return res;
     case 401: // 没登录，或者登录状态过期
       window.location.href = '/';
@@ -30,7 +30,7 @@ instance.interceptors.response.use((response)=>{
     case 403: // 没权限
       window.location.href = '/#/403';
       break;
-    case 422: // 用户填写错误
+    case 400: // 用户填写错误
       ElMessage.warning(res.message);
       break;
     default:
