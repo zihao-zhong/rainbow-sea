@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-
+import user from './modules/user'
 const defaultState = {
   count: 0
 }
@@ -23,5 +23,8 @@ export default createStore({
     double(state: typeof defaultState) {
       return 2 * state.count
     }
+  },
+  modules: {
+    user: user
   }
 })
