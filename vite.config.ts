@@ -1,14 +1,16 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
+import viteImagemin from 'vite-plugin-imagemin';
+import Components from 'unplugin-vue-components/vite';
+import viteCompression from 'vite-plugin-compression';
 import VitePluginElementPlus from 'vite-plugin-element-plus';
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  console.log('mode:', mode);
-  return ({
+  console.log('mode:', mode, path.resolve(__dirname, 'src'));
+  return {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, 'src'),
@@ -17,17 +19,17 @@ export default defineConfig(({ mode }) => {
       },
     },
     server: {
-      port: 4000,   // 设置服务启动端口号
-      open: false,  // 设置服务启动时是否自动打开浏览器
-      cors: true,   // 允许跨域
+      port: 4000, // 设置服务启动端口号
+      open: false, // 设置服务启动时是否自动打开浏览器
+      cors: true, // 允许跨域
       proxy: {
         '/api': {
           target: mode === 'prod' ? 'http://zihao.work:3333' : 'http://localhost:3333',
           changeOrigin: true,
           // secure: false,
-          rewrite: (path) => path.replace(/^\/api/, '')
-        }
-      }
+          rewrite: (p) => p.replace(/^\/api/, ''),
+        },
+      },
     },
     css: {
       preprocessorOptions: {
@@ -37,9 +39,9 @@ export default defineConfig(({ mode }) => {
             @import "/normalize.css";
             @import "./src/assets/scss/common.scss";
             @import "./src/assets/scss/variables.scss";
-          `
+          `,
         },
-      }
+      },
     },
     plugins: [
       vue(),
@@ -52,6 +54,59 @@ export default defineConfig(({ mode }) => {
       Components({
         resolvers: [ElementPlusResolver()],
       }),
+      viteCompression({
+        //生成压缩包gz
+        verbose: true,
+        disable: false,
+        threshold: 10240,
+        algorithm: 'gzip',
+        ext: '.gz',
+      }),
+      viteImagemin({
+        gifsicle: {
+          optimizationLevel: 7,
+          interlaced: false,
+        },
+        optipng: {
+          optimizationLevel: 7,
+        },
+        mozjpeg: {
+          quality: 50,
+        },
+        pngquant: {
+          quality: [0.8, 0.9],
+          speed: 4,
+        },
+        svgo: {
+          plugins: [
+            {
+              name: 'removeViewBox',
+            },
+            {
+              name: 'removeEmptyAttrs',
+              active: false,
+            },
+          ],
+        },
+      }),
     ],
-  })
+    build: {
+      target: 'es2015',
+      terserOptions: {
+        compress: {
+          drop_console: false, // 生产环境时移除 console
+          drop_debugger: true, // 生产环境时移除 debugger
+        },
+      },
+      reportCompressedSize: false, // 取消计算文件大小，加快打包速度
+      sourcemap: false,
+      rollupOptions: {
+        output: {
+          entryFileNames: 'js/[name]-[hash].js',
+          chunkFileNames: 'js/[name]-[hash].js',
+          assetFileNames: '[ext]/[name]-[hash].[ext]',
+        },
+      },
+    },
+  };
 });

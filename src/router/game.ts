@@ -9,6 +9,14 @@ const game: RouteRecordRaw = {
       path: '/game/home',
       component: () => import('@pages/game/Home.vue'),
     },
+    {
+      path: '/game/array',
+      component: () => import('@pages/game/Array.vue'),
+    },
+    {
+      path: '/game/transition',
+      component: () => import('@pages/game/Transition.vue'),
+    },
   ],
 };
 

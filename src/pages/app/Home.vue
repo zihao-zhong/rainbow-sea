@@ -13,6 +13,7 @@ export default defineComponent({
       pageNum: 1,
       pageSize: 10,
     });
+
     return {};
   },
 });
